@@ -8,7 +8,7 @@ def register(request):
         form = UserCreationForm()
     else:
         form = UserCreationForm(data=request.POST)
-        if form.is_valid:
+        if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('notes:home')
