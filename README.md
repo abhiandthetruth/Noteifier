@@ -12,11 +12,11 @@ The app is hosted at http://noteifier.herokuapp.com/. Register and start using i
 * Add/Edit/Delete notes taken
 
 ### Screenshots
-![image](images/image1.png)
+Screenshots are inside the images directory. Here are a couple of them!
+
 ![image](images/image2.png)
+
 ![image](images/image3.png)
-![image](images/image4.png)
-![image](images/image5.png)
 
 ## Developer Instruction
 
