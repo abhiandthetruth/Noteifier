@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Topic, Note
 from .forms import TopicForm,NoteForm
@@ -20,7 +20,7 @@ def topics(request):
 def topic(request, topic_id):
     """Page with list of notes under a topic"""
     user = request.user
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404( Topic, id=topic_id)
     if topic.user != request.user:
         raise Http404
     notes = topic.note_set.order_by('date')
@@ -45,7 +45,7 @@ def create_topic(request):
 
 @login_required
 def delete_topic(request, topic_id):
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404( Topic, id=topic_id)
     if topic.user != request.user:
         raise Http404
     topic.delete()
@@ -54,7 +54,7 @@ def delete_topic(request, topic_id):
 @login_required
 def create_note(request, topic_id):
     """Create a new note"""
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404( Topic, id=topic_id)
     if request.method != 'POST':
         form = NoteForm()
     else:
@@ -70,7 +70,7 @@ def create_note(request, topic_id):
 @login_required
 def edit_note(request, note_id):
     user = request.user
-    note = Note.objects.get(id=note_id)
+    note = get_object_or_404( Note, id=note_id)
     topic = note.topic
     if topic.user != user:
         raise Http404
@@ -87,7 +87,7 @@ def edit_note(request, note_id):
 @login_required
 def delete_note(request, note_id):
     user = request.user
-    note = Note.objects.get(id=note_id)
+    note = get_object_or_404( Note, id=note_id)
     topic = note.topic
     if topic.user != user:
         raise Http404

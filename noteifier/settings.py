@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p0+%e69qf&p*3sh7el1f+5-sm+rs_hzs1!w^-k4zrv)%nv0-0t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'noteifier.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,7 +129,7 @@ STATIC_URL = '/static/'
 import django_heroku
 django_heroku.settings(locals())
 
-if os.environ.get('Debug') == 'True':
+if os.environ.get('DEBUG') == 'True':
     DEBUG = True
-elif os.environ.get('Debug') == 'False':
+elif os.environ.get('DEBUG') == 'False':
     DEBUG = False
