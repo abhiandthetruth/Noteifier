@@ -45,6 +45,7 @@ def create_topic(request):
 
 @login_required
 def delete_topic(request, topic_id):
+    """Delete a topic"""
     topic = get_object_or_404( Topic, id=topic_id)
     if topic.user != request.user:
         raise Http404
@@ -69,6 +70,7 @@ def create_note(request, topic_id):
 
 @login_required
 def edit_note(request, note_id):
+    """Edit a note"""
     user = request.user
     note = get_object_or_404( Note, id=note_id)
     topic = note.topic
@@ -86,6 +88,7 @@ def edit_note(request, note_id):
 
 @login_required
 def delete_note(request, note_id):
+    """Delete a note"""
     user = request.user
     note = get_object_or_404( Note, id=note_id)
     topic = note.topic
