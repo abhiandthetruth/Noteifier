@@ -1,0 +1,12 @@
+{% extends "notes/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<h3>Register</h3>
+<br>
+    <form class="form" action="{% url 'users:register' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-outline-dark" name="submit">Register</button>
+        <input type="hidden" name="next" value="{% url 'notes:home' %}">
+    </form>
+{% endblock content %}}

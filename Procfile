@@ -1,0 +1,1 @@
+web: gunicorn noteifier.wsgi --log-file -

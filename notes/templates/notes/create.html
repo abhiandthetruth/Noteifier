@@ -1,0 +1,11 @@
+{% extends "notes/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<h3>Create New Topic</h3>
+
+<form class="form" action="{% url 'notes:create_topic' %}" method='POST'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-outline-dark">Create</button>
+</form>
+{% endblock content %}

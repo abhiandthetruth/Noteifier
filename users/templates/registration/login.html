@@ -1,0 +1,14 @@
+{% extends "notes/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+    <h2>Log In</h2>
+    <form class="form" action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+        <button name="submit" class="btn btn-outline-dark">Log in</button>
+        {% endbuttons %}
+        <input type="hidden" name="next" value="{% url 'notes:home' %}">
+    </form>
+    <p>Don't have a account, <a href="{% url 'users:register' %}">Register</a> now!</p>
+{% endblock content %}}

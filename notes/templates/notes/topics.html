@@ -1,0 +1,23 @@
+{% extends "notes/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<h1>Topics</h1>
+<br>
+    {% for topic in topics %}
+    <div class="card card-body mb-3">
+        <div class='row'>
+            <div class="col-md-12 col-sm-12">
+                <h3><a href="{% url 'notes:topic' topic.id %}">{{ topic }}</a></h3>
+                <small>Created at {{ topic.date }} written by {{ user.username }}</small>
+                <small><a class="btn-sm btn-outline-danger" href="{% url 'notes:delete_topic' topic.id %}">Delete</a></small>
+
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <li> Nothing to see yet </li>
+        <br>
+    {% endfor %}
+<br>
+<h4><a class='btn btn-outline-dark' href="{% url 'notes:create_topic' %}">Create a new topic</a></h4>
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends "notes/base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Hola EveryOne!</h1>
+        <p>See It! Note It!</p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'notes:topics' %}" role="button">Get Started &raquo;</a></p>
+    </div>
+</div>
+{% endblock content %}

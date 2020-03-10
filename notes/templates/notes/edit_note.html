@@ -1,0 +1,12 @@
+{% extends "notes/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<h3><a href="{% url 'notes:topic' topic.id %}">{{ topic }}</a></h3>
+<br>
+<h5>Edit Note</h5>
+<form class="form" action="{% url 'notes:edit_note' note.id %}" method='POST'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-outline-dark" name="submit">Save Changes</button>
+</form>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "notes/base.html" %}
+
+{% block content %}
+
+<h3>{{ topic }}</h3>
+<br>
+    {% for note in notes %}
+        <div class="card card-body mb-3">
+            <div class='row'>
+                <div class="col-md-12 col-sm-12">
+                    <h3>At {{ note.date|date:'M d, y H:i' }}</h3>
+                    <p>{{ note.text|linebreaks }}</p>
+                    <small><a class="btn btn-outline-dark" href="{% url 'notes:edit_note' note.id %}">Edit note</a></small>
+                    <small><a class="btn btn-outline-danger" href="{% url 'notes:delete_note' note.id %}">Delete note</a></small>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <li> Nothing to see yet </li>
+        <br>
+    {% endfor %}
+    <h4><a class='btn btn-outline-dark' href="{% url 'notes:create_note' topic.id%}">New Note</a></h4>
+{% endblock content %}
