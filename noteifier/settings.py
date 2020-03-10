@@ -128,3 +128,8 @@ STATIC_URL = '/static/'
 
 import django_heroku
 django_heroku.settings(locals())
+
+if os.environ.get('Debug') == 'True':
+    DEBUG = True
+elif os.environ.get('Debug') == 'False':
+    DEBUG = False
