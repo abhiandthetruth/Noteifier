@@ -1,12 +1,19 @@
 {% extends "notes/base.html" %}
 {% load bootstrap4 %}
+{% load static %}
 {% block content %}
 <h3><a href="{% url 'notes:topic' topic.id %}">{{ topic }}</a></h3>
 <br>
-<h5>Create New Note</h5>
+<h5>Create New Note  <small><button id="preview-btn" class="btn btn-sm btn-outline-info">Update Preview</button></h5>
+
 <form class="form" action="{% url 'notes:create_note' topic.id %}" method='POST'>
     {% csrf_token %}
     {% bootstrap_form form %}
     <button class="btn btn-outline-dark" name="submit">Create</button>
 </form>
+<br>
+<div id='preview-area' class='rounded p-2 bg-light'>
+    <strong>Preview Area</strong>
+</div>
+<script src="{% static 'app.js' %}"></script>
 {% endblock content %}

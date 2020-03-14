@@ -1,5 +1,5 @@
 {% extends "notes/base.html" %}
-
+{% load static %}
 {% block content %}
 
 <h3>{{ topic }}</h3>
@@ -9,7 +9,7 @@
             <div class='row'>
                 <div class="col-md-12 col-sm-12">
                     <h3>At {{ note.date|date:'M d, y H:i' }}</h3>
-                    <p>{{ note.text|linebreaks }}</p>
+                    <p class='text-area'>{{ note.text }}</p>
                     <small><a class="btn btn-outline-dark" href="{% url 'notes:edit_note' note.id %}">Edit note</a></small>
                     <small><a class="btn btn-outline-danger" href="{% url 'notes:delete_note' note.id %}">Delete note</a></small>
                 </div>
@@ -20,4 +20,5 @@
         <br>
     {% endfor %}
     <h4><a class='btn btn-outline-dark' href="{% url 'notes:create_note' topic.id%}">New Note</a></h4>
+    <script src="{% static 'display.js' %}"></script>
 {% endblock content %}
