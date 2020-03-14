@@ -10,6 +10,7 @@ The app is hosted at http://noteifier.herokuapp.com/. Register and start using i
 * Register/Login to personalize notes
 * Add/Delete Topics to group your notes
 * Add/Edit/Delete notes taken
+* Markdown Support! Make your notes more expressive
 
 ### Screenshots
 Screenshots are inside the images directory. Here are a couple of them!
