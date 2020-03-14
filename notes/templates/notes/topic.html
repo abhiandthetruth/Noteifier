@@ -10,7 +10,7 @@
                 <div class="col-md-12 col-sm-12">
                     <h3>At {{ note.date|date:'M d, y H:i' }}</h3>
                     <hr>
-                    <p class='text-area'>{{ note.text }}</p>
+                    <p class='text-area rounded p-2 bg-light'>{{ note.text }}</p>
                     <small><a class="btn btn-outline-dark" href="{% url 'notes:edit_note' note.id %}">Edit note</a></small>
                     <small><a class="btn btn-outline-danger" href="{% url 'notes:delete_note' note.id %}">Delete note</a></small>
                 </div>
